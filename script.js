@@ -69,11 +69,12 @@ function changeGridSize() { //deletes grid and makes new one with curr. slider s
 }
 
 function createImage() {
-    let canvas = document.createElement('canvas');
-    let canvasContext = canvas.getContext('2d');
+    let canvas = document.createElement('canvas');    
 
-    canvas.style.width = `${slider.value}px`;
-    canvas.style.height = `${slider.value}px`;
+    canvas.width = slider.value;
+    canvas.height = slider.value;
+
+    let canvasContext = canvas.getContext('2d');
 
     let xNum = 0;
     let yNum = 0;
