@@ -99,7 +99,7 @@ function createImage() {
 
     window.open(canvas.toDataURL("image/png"), '_blank');
 
-    controls.append(canvas);
+   // controls.append(canvas); adds image to controls section -just used for quick testing.
 }
 
 window.onload = () => {
