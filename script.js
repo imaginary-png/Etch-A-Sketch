@@ -2,14 +2,10 @@ const DEFAULT_SIZE = 16;
 
 const grid = document.getElementById('grid-container');
 const squares = document.getElementsByClassName('grid-square');
+const slider = document.getElementById('grid-slider');
 
 let black = true; //these are toggled via buttons
 let rainbow = false;
-
-console.log(grid);
-console.log(grid.clientWidth);
-console.log(squares);
-
 
 function createGrid(size){
     let paddingAmount = (grid.clientWidth/(size*2)) //might change size in future
@@ -23,8 +19,13 @@ function createGrid(size){
 
     Array.from(squares).forEach(element => {
         element.addEventListener('mouseover', colorInSquares)
-    });
-   
+    });  
+}
+
+function deleteGrid(){ //deletes the child grid-square elements, used for changing grid size
+    Array.from(squares).forEach(element => {
+        element.remove();
+    })
 }
 
 function colorInSquares(e){
@@ -38,9 +39,16 @@ function colorInSquares(e){
     }
 }
 
+function changeGridSize(){ //deletes grid and makes new one with curr slider size.
+console.log(slider.value);
+deleteGrid();
+createGrid(slider.value);
+
+}
 
 window.onload = () => {    
     createGrid(DEFAULT_SIZE);
+    slider.addEventListener('change', changeGridSize);
 };
 
 
